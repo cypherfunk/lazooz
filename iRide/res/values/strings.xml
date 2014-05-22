@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">LaZooZ</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="home">Home</string>
+    <string name="cancel">Cancel</string>
+    <string name="search">Search</string>
+    <string name="sort_by">Sort By</string>
+    <string name="filter_by">Filter By</string>
+    <string name="edit">Edit</string>
+
+    <!-- new issu page test -->
+    <string name="component_name"><i>Component name</i></string>
+    <string name="description_text"><i>Description text</i></string>
+    <string name="location_description"><i>Location description</i></string>
+
+    <!-- change password page text -->
+    <string name="enter_old_password"><i>Enter old password</i></string>
+    <string name="enter_new_password"><i>Enter new password</i></string>
+    <string name="confirm_new_password"><i>Confirm new password</i></string>
+
+    <!-- user info page text -->
+    <string name="enter_your_first_name"><i>Enter your first name</i></string>
+    <string name="enter_your_last_name"><i>Enter your last name</i></string>
+    <string name="enter_your_mobile_number"><i>Enter your mobile number</i></string>
+    <string name="enter_your_company_name"><i>Enter your company name</i></string>
+    <string name="enter_your_company_address"><i>Enter your company address</i></string>
+    <string name="enter_your_job_tittle"><i>Enter your job tittle</i></string>
+
+    <!-- new issue assign page text -->
+    <string name="assigned_to"><i>Assigned to</i></string>
+    <string name="decision_description"><i>Decision description</i></string>
+
+    <!-- sign in page text -->
+    <string name="enter_your_email"><i>Enter your email</i></string>
+    <string name="enter_your_username"><i>Enter your username</i></string>
+    <string name="enter_a_password"><i>Enter your password</i></string>
+    <string name="retype_password"><i>Retype your password</i></string>
+    <string name="enter_full_name"><i>Enter your full name</i></string>
+    <string name="enter_home_town"><i>Enter your home town</i></string>
+    <string name="enter_age"><i>Enter your age</i></string>
+    <string name="forgot_your_password"><u>Forgot your password?</u></string>
+    <string name="date"><i>Date</i></string>
+    <string name="add_logo">ADD\nLOGO</string>
+    <string name="add_photo">ADD\nPHOTO</string>
+
+    <!-- project page text -->
+    <string name="projects">Projects</string>
+    <string name="add_project">Add Project</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_register">Register</string>
+    <string name="title_activity_map">MapActivity</string>
+    <string name="title_activity_facebook_login">FacebookLoginActivity</string>
+    <string name="app_id">566753000060301</string>
+    <string name="title_activity_destination_mock">DestinationMockActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_wallet">WalletActivity</string>
+    <string name="title_activity_key_pair">KeyPairActivity</string>
+    <string name="title_activity_activation_code">ActivationCodeActivity</string>
+    <string name="title_activity_code">CodeActivity</string>
+    <string name="enter_activation_code">Enter Activation Code</string>
+    <string name="title_activity_zooz">ZoozActivity</string>
+    <string name="zooz_button">Yalla ZOOZ</string>
+
+</resources>

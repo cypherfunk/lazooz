@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:style/Theme.NoTitleBar.Fullscreen">
+
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="backgroundTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/background</item>
+        <item name="android:focusable">true</item>
+        <item name="android:padding">@dimen/page_padding</item>
+        <item name="android:focusableInTouchMode">true</item>
+    </style>
+
+    <style name="itemBackgroundTheme">
+        <item name="android:background">@color/transparent_black</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/item_height</item>
+        <item name="android:padding">@dimen/item_padding</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="itemUpRoundBackgroundTheme" parent="@style/itemBackgroundTheme">
+        <item name="android:background">@drawable/shape_up_round</item>
+    </style>
+
+    <style name="itemBottomRoundBackgroundTheme" parent="@style/itemBackgroundTheme">
+        <item name="android:background">@drawable/shape_bottom_round</item>
+    </style>
+
+    <style name="itemUpBottomRoundBackgroundTheme" parent="@style/itemBackgroundTheme">
+        <item name="android:background">@drawable/shape_up_bottom_round</item>
+    </style>
+
+    <style name="textViewDefault">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_color_ash</item>
+        <item name="android:text">@string/hello_world</item>
+        <item name="android:textSize">@dimen/text_view_default_text_size</item>
+    </style>
+
+    <style name="textViewDefault.BoldWhiteTextView">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_view_title_text_size</item>
+    </style>
+
+    <style name="textViewDefault.BoldWhiteTextView.TitleTextView">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="textViewDefault.BoldWhiteTextView.SortByTextViewBar">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:background">@drawable/toolbar_bg</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/sort_by_text_view_bar_left_padding</item>
+    </style>
+
+    <style name="textViewDefault.BoldWhiteTextView.AshRoundBG">
+        <item name="android:background">@drawable/shape_up_bottom_round_ash</item>
+        <item name="android:layout_width">@dimen/ash_round_bg_text_view_width</item>
+        <item name="android:layout_height">@dimen/ash_round_bg_text_view_height</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="textViewDefault.ItalicTextView">
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="editTextDefault">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:hint">""</item>
+        <item name="android:padding">@dimen/edit_text_default_padding</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/edit_text_default_text_size</item>
+    </style>
+
+    <style name="editTextDefault.searchEditText">
+        <item name="android:background">@drawable/shape_round_edit_text</item>
+        <item name="android:layout_margin">@dimen/search_edit_text_margin</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:hint">@string/search</item>
+        <item name="android:textColorHint">@color/text_color_ash</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/edit_text_default_text_size</item>
+    </style>
+
+    <style name="FullscreenTheme" parent="android:Theme.NoTitleBar">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="buttonBarStyle">@style/ButtonBar</item>
+        <item name="buttonBarButtonStyle">@style/ButtonBarButton</item>
+    </style>
+
+    <style name="ButtonBar">
+        <item name="android:paddingLeft">2dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingRight">2dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:background">@android:drawable/bottom_bar</item>
+    </style>
+
+    <style name="ButtonBarButton" />
+
+</resources>

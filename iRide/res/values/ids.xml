@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="ActivationCode" type="id">ActivationCodeValue</item>
+    <item name="ActivationCodeName" type="id">ActivationCodeValue</item>
+    <item name="zoozcounter" type="id" />
+    <item name="zooz_button" type="id">zooz</item>
+    <item name="zoozcounter_msg" type="id">zoozcounter_msg</item>
+    <item name="zoozdistance_msg" type="id">zooz_distance_msg</item>
+</resources>
