@@ -25,12 +25,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnCancelListener;
-import com.facebook.*;
-import com.facebook.model.GraphUser;
-import com.facebook.widget.FacebookDialog;
-import com.facebook.widget.LoginButton;
 import com.iride.data.Config;
-import com.iride.data.FBUserInfo;
 import com.iride.data.UserInfo;
 import com.iride.io.Response;
 import com.iride.io.ServerResponseListener;
@@ -41,13 +36,10 @@ public class MainActivity extends Activity implements ServerResponseListener {
 
 	Button btnLogIn;
 	Button btnRegister;
-	LoginButton btnFbLogin;
 
 	private Handler handler;
 	private ProgressDialog progDialog;
 	boolean isInterrupted = false;
-
-	private UiLifecycleHelper uiHelper;
 
     UserInfo userInfo = UserInfo.getInstance();
 
@@ -69,8 +61,6 @@ public class MainActivity extends Activity implements ServerResponseListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		uiHelper = new UiLifecycleHelper(this, callback);
-		uiHelper.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sign_in);
 		//btnLogIn = (Button) findViewById(R.id.login);
 		btnRegister = (Button) findViewById(R.id.register);
@@ -123,20 +113,7 @@ public class MainActivity extends Activity implements ServerResponseListener {
 						}
 					}
 				});
-*/
-		Session session = Session.getActiveSession();
-		if (session != null) {
-			Session.openActiveSession(this, false,
-					new Session.StatusCallback() {
-						// callback when session changes state
-						@Override
-						public void call(Session session, SessionState state,
-								Exception exception) {
-
-						}
-					});
-		}
-	}
+*/	}
 
 	// initializes the buttons listener
     private void CreateKeyPair1() {
@@ -361,42 +338,9 @@ public class MainActivity extends Activity implements ServerResponseListener {
 				}
 			}
 		}
-		uiHelper.onActivityResult(requestCode, resultCode, data, dialogCallback);
 	}
 
-	private Session.StatusCallback callback = new Session.StatusCallback() {
-		@Override
-		public void call(Session session, SessionState state,
-				Exception exception) {
-			onSessionStateChange(session, state, exception);
-		}
-	};
 
-	private FacebookDialog.Callback dialogCallback = new FacebookDialog.Callback() {
-		@Override
-		public void onError(FacebookDialog.PendingCall pendingCall,
-				Exception error, Bundle data) {
-			// Log.d("HelloFacebook", String.format("Error: %s",
-			// error.toString()));
-		}
-
-		@Override
-		public void onComplete(FacebookDialog.PendingCall pendingCall,
-				Bundle data) {
-			// Log.d("HelloFacebook", "Success!");
-		}
-	};
-
-	private void onSessionStateChange(Session session, SessionState state,
-			Exception exception) {
-		if (state == SessionState.OPENED_TOKEN_UPDATED) {
-		}
-		updateUI();
-	}
-
-	private void updateUI() {
-		// Session session = Session.getActiveSession();
-	}
 /*
 	// login data read
 	private boolean readLoginInfo() {
