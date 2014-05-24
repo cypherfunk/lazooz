@@ -25,6 +25,10 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnCancelListener;
+
+import com.google.bitcoin.core.DumpedPrivateKey;
+import com.google.bitcoin.core.ECKey;
+import com.google.bitcoin.core.NetworkParameters;
 import com.iride.data.Config;
 import com.iride.data.UserInfo;
 import com.iride.io.Response;
@@ -118,30 +122,22 @@ public class MainActivity extends Activity implements ServerResponseListener {
 	// initializes the buttons listener
     private void CreateKeyPair1() {
         // generate key pair
-       try {
-           KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
 
-           keyPairGenerator.initialize(1024);
-           KeyPair keyPair = keyPairGenerator.genKeyPair();
+        ECKey key = new ECKey(); // keypair
+        byte[] pub = key.getPubKey();
 
-// extract the encoded private key, this is an unencrypted PKCS#8 private key
-           String encodedprivkey = keyPair.getPrivate().toString();
-           String encodedpubkey  = keyPair.getPublic().toString();
+        DumpedPrivateKey prv;
+        prv = key.getPrivateKeyEncoded(NetworkParameters.prodNet());
+        System.out.println("PubKey:" + pub.toString());
+        System.out.println("PrvKey:" + prv);
 
-           System.out.println("PubKey:" + encodedpubkey);
-           System.out.println("PrvKey:" + encodedprivkey);
+        userInfo.setPubKey(pub.toString());
 
-           userInfo.setPubKey(encodedpubkey);
-
-           StoreParam("PUB_KEY",userInfo.getPubKey());
-
-
-       }catch (NoSuchAlgorithmException e) {
-           // TODO Auto-generated catch block
-           System.out.println("NoSuchAlgorithmException");
-
-       }
+        StoreParam("PUB_KEY", userInfo.getPubKey());
     }
+
+
+
 	private void initializeListener() {
 /*
 		btnLogIn.setOnClickListener(new OnClickListener()

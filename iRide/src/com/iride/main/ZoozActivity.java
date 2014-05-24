@@ -6,7 +6,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.iride.data.Config;
-import com.iride.data.FBUserInfo;
 import com.iride.data.UserInfo;
 import com.iride.io.Response;
 import com.iride.io.ServerResponseListener;
