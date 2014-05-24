@@ -41,8 +41,6 @@
         </activity>
         <activity android:name="com.iride.main.MapActivity" >
         </activity>
-        <activity android:name="com.example.test.ImGoing" >
-        </activity>
 
         <!-- Goolge API Key -->
         <meta-data
@@ -77,7 +75,7 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name="com.iride.main.BootReciever" >
+        <receiver android:name="com.iride.io.BootReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
@@ -93,14 +91,7 @@
             android:name="com.iride.main.WalletActivity"
             android:label="@string/title_activity_wallet" >
         </activity>
-        <activity
-            android:name="com.iride.main.KeyPairActivity"
-            android:label="@string/title_activity_key_pair" >
-        </activity>
-        <activity
-            android:name="com.iride.main.util.ActivationCodeActivity"
-            android:label="@string/title_activity_activation_code" >
-        </activity>
+
         <activity
             android:name="com.iride.main.CodeActivity"
             android:label="@string/title_activity_code" >

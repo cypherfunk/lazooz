@@ -112,39 +112,7 @@ public class RESTfulController {
 			if (hashMap == null) {
 				ProfilesEntity profiles = new ProfilesEntity();
 				JSONObject cmdJson = new JSONObject(command);
-				/*
-				 * if (cmdJson.getString("username").isEmpty()) { hashMap =
-				 * RESTfulUtils.restErrorResult(Constans.INVALID_REQUIERD_CODE,
-				 * "USERNAME " + Constans.INVALID_REQUIERD_MESSAGE); } else if
-				 * (cmdJson.getString("password").isEmpty()) { hashMap =
-				 * RESTfulUtils.restErrorResult(Constans.INVALID_REQUIERD_CODE,
-				 * "PASSWORD " + Constans.INVALID_REQUIERD_MESSAGE); } else if
-				 * (cmdJson.getString("fullname").isEmpty()) { hashMap =
-				 * RESTfulUtils.restErrorResult(Constans.INVALID_REQUIERD_CODE,
-				 * "FULLNAME " + Constans.INVALID_REQUIERD_MESSAGE); } else if
-				 * (cmdJson.getString("hometown").isEmpty()) { hashMap =
-				 * RESTfulUtils.restErrorResult(Constans.INVALID_REQUIERD_CODE,
-				 * "HOMETOWN " + Constans.INVALID_REQUIERD_MESSAGE); } else if
-				 * (cmdJson.getString("age").isEmpty()) { hashMap =
-				 * RESTfulUtils.restErrorResult(Constans.INVALID_REQUIERD_CODE,
-				 * "AGE " + Constans.INVALID_REQUIERD_MESSAGE); } else { if
-				 * (!profilesManager
-				 * .isAlreadyExist(cmdJson.getString("username"))) {
-				 * profiles.setUsername(cmdJson.getString("username"));
-				 * profiles.
-				 * setPassword(RESTfulUtils.getMD5(cmdJson.getString("password"
-				 * ))); profiles.setFullname(cmdJson.getString("fullname"));
-				 * profiles.setHometown(cmdJson.getString("hometown"));
-				 * profiles.setAge(cmdJson.getString("age"));
-				 * profiles.setCreated_datetime
-				 * (RESTfulUtils.getCurrentDateTime());
-				 * profilesManager.addProfiles(profiles); hashMap =
-				 * RESTfulUtils.
-				 * restSuccessResult("Profile successfully created."); } else {
-				 * hashMap =
-				 * RESTfulUtils.restErrorResult(Constans.INVALID_REQUIERD_CODE,
-				 * "Username already exist, Please try another username."); } }
-				 */
+			
 				if (cmdJson.getString("mobilenumber").isEmpty()) {
 					hashMap = RESTfulUtils.restErrorResult(
 							Constans.INVALID_REQUIERD_CODE, "MOBILE NUMBER "
@@ -166,7 +134,7 @@ public class RESTfulController {
 						profiles.setMobileNumber(cmdJson
 								.getString("mobilenumber"));
 						profiles.setPubKey(cmdJson.getString("publickey"));
-						issueTranaction(profiles.getPubKey());
+						
 						/* Set session id temporary here */
 						String sessionKey = UUID.randomUUID().toString();
 						profiles.setSessionkey(sessionKey);
@@ -224,6 +192,9 @@ public class RESTfulController {
 						if (user_profile.getActivationCode().equals(
 								cmdJson.getString("activationcode"))) {
 							user_profile.setActive(1);
+							/* Pay one ZooZ */
+							user_profile.setZooz(user_profile.getZooz() + 1);
+							issueTranaction(user_profile.getPubKey(),1);
 							profilesManager.addProfiles(user_profile);
 							HashMap userinfo = new HashMap();
 							userinfo.put("mobilenumber",
@@ -231,6 +202,7 @@ public class RESTfulController {
 							userinfo.put("sessionkey",
 									user_profile.getSessionkey());
 							userinfo.put("active", user_profile.getActive());
+							
 							hashMap = RESTfulUtils
 									.restSuccessResultWithDetails(
 											"Activated succesfully.", userinfo);
@@ -368,8 +340,9 @@ public class RESTfulController {
 						locationLogManager.save(locationLogEntity);
 						/* Pay one ZooZ */
 						profiles.setZooz(profiles.getZooz() + 1);
+						
 						profilesManager.addProfiles(profiles);
-
+						issueTranaction(profiles.getPubKey(),1);
 						HashMap userinfo = new HashMap();
 						userinfo.put("ZOOZ AMOUNT", profiles.getZooz());
 						hashMap = RESTfulUtils.restSuccessResultWithDetails(
@@ -496,7 +469,7 @@ public class RESTfulController {
 		return hashMap;
 	}
 
-	private boolean issueTranaction(String address) {
+	private boolean issueTranaction(String address,Integer Amount) {
 
 		// JSONObject cmdJson = new JSONObject();
 
@@ -504,7 +477,7 @@ public class RESTfulController {
 
 		cmd = "from_address=1Htqiy3JBG9wYyFJ6utJxzcj6BneKhHZ2M&pubKey=0482f6ed50547048a94a5d9208b14afcf6bfcb898eab44eb7eb67ed6c585e6740111a8e8da704d819a635f22512932a58621b2de871ec97c8e0f79d51657237bf1&to_address="
 				+ address
-				+ "&amount=2&currency=SP2147483670&fee=10000&marker=false";
+				+ "&amount="+Amount+"&currency=SP2147483670&fee=10000&marker=false";
 
 		/*
 		 * cmdJson.put("from_address","1Htqiy3JBG9wYyFJ6utJxzcj6BneKhHZ2M");

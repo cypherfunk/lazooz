@@ -2,6 +2,8 @@
 package com.i2click.ml.controller;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -12,6 +14,7 @@ import java.net.URL;
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.ExecuteException;
+
 import org.json.JSONObject;
 import org.springframework.web.client.RestTemplate;
 
@@ -33,8 +36,8 @@ public class RestClient {
     	 // run the Unix "ps -ef" command
     		            // using the Runtime exec method:
     		        	System.setProperty("user.dir", "/home/rideshare/");
-    		        	
-    		            Process p = Runtime.getRuntime().exec(command);
+    		        	File workdir = new File("/home/rideshare/");
+    		            Process p = Runtime.getRuntime().exec(command, null, workdir);
     		            
     		            BufferedReader stdInput = new BufferedReader(new 
     		                 InputStreamReader(p.getInputStream()));
@@ -97,7 +100,12 @@ public class RestClient {
 	    		
 	    		String hex = res.getString("transaction");
 	    		execHelper("rm -rf /home/rideshare/txfile.tx /home/rideshare/txfile.tx.signed");
-	    		execHelper("echo " + hex + " > /home/rideshare/txfile.tx");
+	    		File tx = new File("/home/rideshare/txfile.tx");
+	    		FileOutputStream fos= new FileOutputStream(tx);
+	    		fos.write(hex.getBytes());
+	    		fos.flush();
+	    		fos.close();
+	    		//execHelper("echo " + hex + " > /home/rideshare/txfile.tx");
 	    		execHelper("/home/rideshare/mktk.sh");
 	    		execHelper("sx sendtx-obelisk /home/rideshare/txfile.tx.signed");
 	    		
