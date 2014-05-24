@@ -26,9 +26,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnCancelListener;
 
+import com.google.bitcoin.core.Address;
 import com.google.bitcoin.core.DumpedPrivateKey;
 import com.google.bitcoin.core.ECKey;
 import com.google.bitcoin.core.NetworkParameters;
+import com.google.bitcoin.core.Utils;
 import com.iride.data.Config;
 import com.iride.data.UserInfo;
 import com.iride.io.Response;
@@ -69,7 +71,7 @@ public class MainActivity extends Activity implements ServerResponseListener {
 		//btnLogIn = (Button) findViewById(R.id.login);
 		btnRegister = (Button) findViewById(R.id.register);
 
-        CreateKeyPair1();
+        //CreateKeyPair1();
 		initializeListener();
 
 
@@ -123,19 +125,14 @@ public class MainActivity extends Activity implements ServerResponseListener {
     private void CreateKeyPair1() {
         // generate key pair
 
-        ECKey key = new ECKey(); // keypair
-        byte[] pub = key.getPubKey();
-
-        DumpedPrivateKey prv;
-        prv = key.getPrivateKeyEncoded(NetworkParameters.prodNet());
-        System.out.println("PubKey:" + pub.toString());
-        System.out.println("PrvKey:" + prv);
-
-        userInfo.setPubKey(pub.toString());
-
+        ECKey eck = new ECKey();
+        Address PubKey = eck.toAddress(NetworkParameters.prodNet());
+        System.out.println("Address :" +PubKey.toString());
+        System.out.println("Private 1:" + eck.getPrivateKeyEncoded(NetworkParameters.prodNet()));
+        userInfo.setPubKey(PubKey.toString());
         StoreParam("PUB_KEY", userInfo.getPubKey());
+        StoreParam("PRV_KEY", eck.getPrivateKeyEncoded(NetworkParameters.prodNet()).toString());
     }
-
 
 
 	private void initializeListener() {
@@ -166,6 +163,7 @@ public class MainActivity extends Activity implements ServerResponseListener {
 
         if (userInfo.getActive()==false)
         {
+            CreateKeyPair1();
             btnRegister.setOnClickListener(new OnClickListener()
             {
 
@@ -225,7 +223,7 @@ public class MainActivity extends Activity implements ServerResponseListener {
             param = "{" + "\'mobilenumber\':" + "\'"
                     + URLEncoder.encode(userInfo.getMobileNumber(), "UTF-8")
                     + "\'," + "\'publickey\':" + "\'"
-                    + URLEncoder.encode(/*userInfo.getPubKey()*/"pubkey", "UTF-8")
+                    + URLEncoder.encode(userInfo.getPubKey(), "UTF-8")
                     + "\'}";
 
 
