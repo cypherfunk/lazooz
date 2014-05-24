@@ -10,7 +10,6 @@ import java.security.NoSuchAlgorithmException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -30,12 +29,10 @@ import com.facebook.model.GraphUser;
 import com.facebook.widget.FacebookDialog;
 import com.facebook.widget.LoginButton;
 import com.iride.data.Config;
-import com.iride.data.FBUserInfo;
 import com.iride.data.UserInfo;
 import com.iride.io.Response;
 import com.iride.io.ServerResponseListener;
 import com.iride.io.Serverconnector;
-import com.iride.main.R;
 
 public class MainActivity extends Activity implements ServerResponseListener {
 

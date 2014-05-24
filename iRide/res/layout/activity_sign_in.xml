@@ -1,33 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/backgroundTheme"
-    >
+    android:background="@drawable/zooz_bg">
 
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView">
     <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_alignParentTop="true">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape_up_round"
-            android:orientation="vertical"
-            android:padding="@dimen/item_padding" >
-
-            <TextView
-                style="@style/textViewDefault"
-                android:text="MobileNumber" />
-
-            <EditText
-                android:id="@+id/edtPhoneNumber"
-                style="@style/editTextDefault"
-                android:hint="@string/enter_your_mobile_number" />
-        </LinearLayout>
-  <!--
+        <!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -118,19 +103,34 @@
             android:layout_marginTop="30dp"
             android:enabled="false" />
 -->
-    <Button 
+
+    </LinearLayout>
+    </ScrollView>
+
+    <Button
         android:id="@+id/register"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
         android:textColor="@color/white"
-        android:background="@drawable/selector_button"
-        android:text="Register"
-        />
-    
-    </LinearLayout>
-    </ScrollView>
+        android:background="@drawable/register_button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true" />
+
+    <EditText
+        android:id="@+id/edtPhoneNumber"
+        style="@style/editTextDefault"
+        android:hint="@string/enter_your_mobile_number"
+        android:textColorHint="#303030"
+        android:background="@drawable/your_phone_number_button"
+        android:layout_marginBottom="15dp"
+        android:layout_above="@+id/register"
+        android:layout_alignParentRight="true"
+        android:inputType="phone"
+        android:textColor="#323232"
+        android:textSize="20dp"
+        android:textIsSelectable="true"
+        android:phoneNumber="true" />
 
 </RelativeLayout>
