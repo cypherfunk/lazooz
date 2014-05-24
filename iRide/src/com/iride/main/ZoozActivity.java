@@ -1,10 +1,7 @@
 package com.iride.main;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.iride.data.Config;
 import com.iride.data.UserInfo;
 import com.iride.io.Response;
@@ -30,8 +27,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.iride.main.R;
 
 import org.json.JSONObject;
 
@@ -84,7 +79,7 @@ public class ZoozActivity extends Activity implements LocationListener, ServerRe
     {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_zooz);
+        setContentView(R.layout.activity_zooz_old);
 
         final View controlsView = findViewById(R.id.fullscreen_content_controls);
         final View contentView = findViewById(R.id.fullscreen_content);

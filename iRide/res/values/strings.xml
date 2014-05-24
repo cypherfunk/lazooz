@@ -65,5 +65,6 @@
     <string name="enter_activation_code">Enter Activation Code</string>
     <string name="title_activity_zooz">ZoozActivity</string>
     <string name="zooz_button">Yalla ZOOZ</string>
+    <string name="splash_screen_name">laZooz</string>
 
 </resources>

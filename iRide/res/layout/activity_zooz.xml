@@ -3,59 +3,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0099cc"
-    tools:context="com.iride.main.ZoozActivity">
+    tools:context=".ZoozActivity">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
-    <TextView android:id="@+id/fullscreen_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:keepScreenOn="true"
-        android:textColor="#33b5e5"
-        android:textStyle="bold"
-        android:textSize="50sp"
-        android:gravity="center"
-        android:text="" />
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
-    <FrameLayout android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
 
-        <LinearLayout android:id="@+id/fullscreen_content_controls"
-            style="?metaButtonBarStyle"
-            android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/zooz_background"
+        style="@style/AppBaseTheme">
+
+        <Button android:id="@id/zooz_button"
+            style="?metaButtonBarButtonStyle"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/black_overlay"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent">
-
-            <Button android:id="@id/zooz_button"
-                style="?metaButtonBarButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/zooz_button" />
-
-        </LinearLayout>
+            android:layout_weight="1"
+            android:text="@string/zooz_button"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="44dp"
+            android:layout_centerVertical="true" />
 
         <TextView
             android:layout_width="183dp"
-            android:layout_height="133dp"
+            android:layout_height="27dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@id/zoozcounter"
             android:layout_gravity="center"
-            android:inputType="number" />
+            android:inputType="number"
+            android:background="@drawable/my_zooz"
+            android:layout_alignTop="@id/zoozdistance_msg"
+            android:layout_alignLeft="@id/zoozdistance_msg" />
+
         <TextView
             android:layout_width="183dp"
             android:layout_height="105dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@id/zoozdistance_msg"
             android:layout_gravity="center_horizontal|bottom"
-            android:inputType="number" />
+            android:inputType="number"
+            android:layout_below="@id/zoozcounter_msg"
+            android:layout_alignLeft="@id/zoozcounter_msg"
+            android:layout_marginTop="41dp" />
 
         <TextView
             android:layout_width="183dp"
@@ -63,7 +57,48 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@id/zoozcounter_msg"
             android:layout_gravity="center_horizontal|top"
-            android:inputType="number" />
-    </FrameLayout>
+            android:inputType="number"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar"
+            android:background="@drawable/critical_mass_graph"
+            android:indeterminate="false"
+            android:layout_alignBottom="@id/zoozdistance_msg"
+            android:layout_alignRight="@id/zoozdistance_msg"
+            android:layout_alignLeft="@id/zoozdistance_msg" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="My ZooZ"
+            android:id="@+id/textView"
+            android:textColor="#101010"
+            android:layout_below="@id/zoozcounter_msg"
+            android:layout_alignLeft="@id/zoozcounter_msg" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Critical Mass"
+            android:id="@+id/textView2"
+            android:layout_above="@+id/progressBar"
+            android:layout_alignLeft="@id/zoozdistance_msg"
+            android:textColor="#101010" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:src="@drawable/zooz"
+            android:layout_above="@id/zooz_button"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
 
 </FrameLayout>

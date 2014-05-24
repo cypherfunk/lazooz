@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/iRide.iml" filepath="$PROJECT_DIR$/iRide.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/mastercoin-hackaton.iml" filepath="$PROJECT_DIR$/.idea/mastercoin-hackaton.iml" />
     </modules>
   </component>
 </project>
