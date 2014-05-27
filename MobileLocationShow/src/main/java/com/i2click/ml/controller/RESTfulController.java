@@ -472,23 +472,16 @@ public class RESTfulController {
 	private boolean issueTranaction(String address,Integer Amount) {
 
 		// JSONObject cmdJson = new JSONObject();
-
+        /*
 		String cmd = new String();
 
 		cmd = "from_address=1Htqiy3JBG9wYyFJ6utJxzcj6BneKhHZ2M&pubKey=0482f6ed50547048a94a5d9208b14afcf6bfcb898eab44eb7eb67ed6c585e6740111a8e8da704d819a635f22512932a58621b2de871ec97c8e0f79d51657237bf1&to_address="
 				+ address
 				+ "&amount="+Amount+"&currency=SP2147483670&fee=10000&marker=false";
 
-		/*
-		 * cmdJson.put("from_address","1Htqiy3JBG9wYyFJ6utJxzcj6BneKhHZ2M");
-		 * cmdJson.put("pubKey",
-		 * "0482f6ed50547048a94a5d9208b14afcf6bfcb898eab44eb7eb67ed6c585e6740111a8e8da704d819a635f22512932a58621b2de871ec97c8e0f79d51657237bf1"
-		 * ); cmdJson.put("to_address",address); cmdJson.put("amount",1);
-		 * cmdJson.put("currency","SP2147483670"); cmdJson.put("fee",10000);
-		 * cmdJson.put("marker",false);
-		 */
-
-		RestClient.SendRest(cmd);
+        */
+		//RestClient.SendRest(cmd);
+		System.out.println("Dummy...the zooz mininig is done on a seperate procees");
 
 		return true;
 	}

@@ -1,0 +1,146 @@
+*****************************************************************************
+*                                                                           *
+*                       R E L E A S E - N O T E S                           *
+*                                                                           *
+* PRODUCT NAME: EMV-JACK    					            *
+*                                                                           *
+*****************************************************************************
+  LAST REVISION:   24-01-13
+  BASE ON:         22-01-13
+  REVISION DATE:   23/01/2013
+  AUTHOR NAME:     Gilad & Ephraim
+  DESCRIPTION:     1.add battery test coin end external
+                   2.add buzzer 
+*****************************************************************************
+  LAST REVISION:   22-01-13
+  BASE ON:         17-01-13
+  REVISION DATE:   20/01/2013
+  AUTHOR NAME:     Barak & Gilad
+  DESCRIPTION:     1.add I2C and ADC
+                   2.Full SmartCard driver from Ray
+                   3.P7Sinteg release mode (debug mode caused problems)   
+
+  TODO:
+       - Fix wornning on RTC
+       - Do we have bug on bootloader for big files? 
+                   
+*****************************************************************************
+  LAST REVISION:   17-01-13
+  BASE ON:         15-01-13
+  REVISION DATE:   16/01/2013
+  AUTHOR NAME:     Barak & Gilad
+  DESCRIPTION:     1.Add option to remove USB support to reduce size
+                   2. Kb is now functional
+                   3. SC test should work
+                   4. MSR test should work 
+		   5. add GPIO, Uart
+                   
+*****************************************************************************
+  LAST REVISION:   15-01-13
+  BASE ON:         14-01-13
+  REVISION DATE:   15/01/2013
+  AUTHOR NAME:     Barak
+  DESCRIPTION:     Send to TPE on the 15/01/13
+                   Fixed MSR and Led
+*****************************************************************************
+  LAST REVISION:   14-01-13
+  BASE ON:         09-01-13
+  REVISION DATE:   14/01/2013
+  AUTHOR NAME:     Barak
+  DESCRIPTION:     Send to TPE on the 14/01/13
+                   First code drop for hw bring up
+                   include:
+                   Test app with the following support:
+                   - USB prompt.
+                   - External decoder MSR test
+                   - Audio test
+                   - Led test
+                   - Smart card - not fully functional  
+                   - KeyPad test                      
+
+                   BootLoader - not for release
+ 	
+*****************************************************************************
+  LAST REVISION:   13-01-13
+  BASE ON:         EMVJACK-BARAK
+  REVISION DATE:   09/01/2013
+  AUTHOR NAME:     Oren
+  DESCRIPTION:     
+                   1.Keypad driver+ test
+
+  
+ 
+*****************************************************************************
+  LAST REVISION:   09-01-13
+  BASE ON:         31-12-12
+  REVISION DATE:   09/01/2013
+  AUTHOR NAME:     Oren
+  DESCRIPTION:     
+                   1.Keypad driver+ test
+                   2.Leds driver  + test
+
+*****************************************************************************
+  LAST REVISION:   07-01-13
+  BASE ON:         01-01-13
+  REVISION DATE:   07/01/2013
+  AUTHOR NAME:     Barak
+  DESCRIPTION:     1. Keep working on USB
+		   2. Secure DB 
+		   3. EE
+ 	
+  TODO:
+       - Fix wornning on RTC
+*****************************************************************************
+  LAST REVISION:   01-01-13
+  BASE ON:         31-12-12
+  REVISION DATE:   01/01/2013
+  AUTHOR NAME:     Barak
+  DESCRIPTION:     1. Keep working on USB
+  TODO:
+       - Fix wornning on RTC
+ 
+*****************************************************************************
+  LAST REVISION:   31-12-12
+  BASE ON:         27-12-12-OREN
+  REVISION DATE:   31/12/2012
+  AUTHOR NAME:     Barak
+  DESCRIPTION:     1. added FS for testing
+		   2. added Watchdog_Reset
+		   3. added USB Stack to loader - NOT working
+                   4. added rng fips test
+		   5. Fixed bug in Flash 
+  TODO:
+       - Flash unalign
+       - Flash security
+       - USB !!!
+       - USB API
+       - LED in bootloader
+       - FS ?
+       - 
+
+*****************************************************************************
+  LAST REVISION:   27-12-12-OREN
+  BASE ON:         26-12-12
+  REVISION DATE:   27/12/2012
+  AUTHOR NAME:     Oren
+  DESCRIPTION:     1. Pin Entry test with extrnal pc keypad.
+		   2. RTC read/set
+		   3. Non Volatile mem macro.
+
+
+*****************************************************************************
+  LAST REVISION:   26-12-12
+  BASE ON:         25-12-12
+  REVISION DATE:   26/12/2012
+  AUTHOR NAME:     Barak
+  DESCRIPTION:     Basic bootloader
+
+                   
+*****************************************************************************
+  LAST REVISION:   25-12-12
+  BASE ON:         NULL
+  REVISION DATE:   25/12/2012
+  AUTHOR NAME:     Barak
+  DESCRIPTION:     Base Version
+                   
+*****************************************************************************
