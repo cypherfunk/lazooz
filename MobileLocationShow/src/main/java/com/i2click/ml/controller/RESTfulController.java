@@ -192,9 +192,6 @@ public class RESTfulController {
 						if (user_profile.getActivationCode().equals(
 								cmdJson.getString("activationcode"))) {
 							user_profile.setActive(1);
-							/* Pay one ZooZ */
-							user_profile.setZooz(user_profile.getZooz() + 1);
-							issueTranaction(user_profile.getPubKey(),1);
 							profilesManager.addProfiles(user_profile);
 							HashMap userinfo = new HashMap();
 							userinfo.put("mobilenumber",
@@ -338,17 +335,12 @@ public class RESTfulController {
 						locationLogEntity.setProfileid(profiles.getPkid() + "");
 
 						locationLogManager.save(locationLogEntity);
-						/* Pay one ZooZ */
-						profiles.setZooz(profiles.getZooz() + 1);
-						
 						profilesManager.addProfiles(profiles);
 						issueTranaction(profiles.getPubKey(),1);
 						HashMap userinfo = new HashMap();
 						userinfo.put("ZOOZ AMOUNT", profiles.getZooz());
 						hashMap = RESTfulUtils.restSuccessResultWithDetails(
 								Constans.SUCCESS_MESSAGE, userinfo);
-						// hashMap =
-						// RESTfulUtils.restSuccessResult(Constans.SUCCESS_MESSAGE);
 					} else {
 
 						hashMap = RESTfulUtils
