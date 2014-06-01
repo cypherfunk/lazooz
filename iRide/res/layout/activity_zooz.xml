@@ -1,5 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/FullscreenTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0099cc"
@@ -13,92 +14,106 @@
          android:fitsSystemWindows. -->
 
     <RelativeLayout
+        style="@style/AppBaseTheme"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@drawable/zooz_background"
-        style="@style/AppBaseTheme">
+        android:background="@drawable/zooz_background">
 
-        <Button android:id="@id/zooz_button"
+        <Button
+            android:id="@id/zooz_button"
             style="?metaButtonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/zooz_button"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="44dp"
-            android:layout_centerVertical="true" />
+            android:layout_weight="1"
+            android:text="@string/zooz_button" />
 
         <TextView
+            android:id="@id/zoozcounter"
             android:layout_width="183dp"
             android:layout_height="27dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@id/zoozcounter"
-            android:layout_gravity="center"
-            android:inputType="number"
-            android:background="@drawable/my_zooz"
+            android:layout_alignLeft="@id/zoozdistance_msg"
             android:layout_alignTop="@id/zoozdistance_msg"
-            android:layout_alignLeft="@id/zoozdistance_msg" />
+            android:layout_gravity="center"
+            android:background="@drawable/my_zooz"
+            android:inputType="number"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
+            android:id="@id/zoozdistance_msg"
             android:layout_width="183dp"
             android:layout_height="105dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@id/zoozdistance_msg"
-            android:layout_gravity="center_horizontal|bottom"
-            android:inputType="number"
-            android:layout_below="@id/zoozcounter_msg"
             android:layout_alignLeft="@id/zoozcounter_msg"
-            android:layout_marginTop="41dp" />
+            android:layout_below="@id/zoozcounter_msg"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginTop="41dp"
+            android:inputType="number"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
+            android:id="@id/zoozcounter_msg"
             android:layout_width="183dp"
             android:layout_height="133dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@id/zoozcounter_msg"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:layout_gravity="center_horizontal|top"
             android:inputType="number"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <ProgressBar
+            android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/progressBar"
-            android:background="@drawable/critical_mass_graph"
-            android:indeterminate="false"
             android:layout_alignBottom="@id/zoozdistance_msg"
-            android:layout_alignRight="@id/zoozdistance_msg"
-            android:layout_alignLeft="@id/zoozdistance_msg" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="My ZooZ"
-            android:id="@+id/textView"
-            android:textColor="#101010"
-            android:layout_below="@id/zoozcounter_msg"
-            android:layout_alignLeft="@id/zoozcounter_msg" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Critical Mass"
-            android:id="@+id/textView2"
-            android:layout_above="@+id/progressBar"
             android:layout_alignLeft="@id/zoozdistance_msg"
+            android:layout_alignRight="@id/zoozdistance_msg"
+            android:background="@drawable/critical_mass_graph"
+            android:indeterminate="false" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/zoozcounter_msg"
+            android:layout_below="@id/zoozcounter_msg"
+            android:text="My ZooZ"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#101010" />
 
-        <ImageView
+        <TextView
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/progressBar"
+            android:layout_alignLeft="@id/zoozdistance_msg"
+            android:text="Critical Mass"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#101010" />
+
+        <com.iride.main.widgets.Odometer
+            android:id="@+id/odometer"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/main_valuedisplay"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#FFF"
+            android:textSize="34dp" />
+
+        <ImageView
             android:id="@+id/imageView"
-            android:src="@drawable/zooz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_above="@id/zooz_button"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/zooz" />
     </RelativeLayout>
 
 </FrameLayout>

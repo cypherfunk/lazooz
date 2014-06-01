@@ -38,7 +38,7 @@ import com.iride.io.Serverconnector;
 
 public class MainActivity extends Activity implements ServerResponseListener {
 
-	Button btnLogIn;
+	//Button btnLogIn;
 	Button btnRegister;
 
 	private Handler handler;
@@ -167,15 +167,15 @@ public class MainActivity extends Activity implements ServerResponseListener {
 
                 @Override
                 public void onClick(View view) {
-                    if (btnRegister.getText().toString().equalsIgnoreCase("Register")) {
+                    //if (btnRegister.getText().toString().equalsIgnoreCase("Register")) {
                         if (readRegistrationInfo())
                             callServerforRegistration();
-                    } else {
-                        if (userInfo.getSessionkey() != null) {
-                            callServerforLogout(userInfo.getSessionkey());
-                            btnLogIn.setText("Login");
-                        }
-                    }
+//                    } else {
+//                        if (userInfo.getSessionkey() != null) {
+//                            callServerforLogout(userInfo.getSessionkey());
+//                            //btnLogIn.setText("Login");
+//                        }
+//                    }
                 /*
 				Intent registerIntent = new Intent(getApplicationContext(),
 						RegisterActivity.class);

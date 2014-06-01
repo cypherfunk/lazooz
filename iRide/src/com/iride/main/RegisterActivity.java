@@ -46,8 +46,8 @@ public class RegisterActivity extends Activity implements ServerResponseListener
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_register);
-		btnRegister = (Button) findViewById(R.id.register1);
+		setContentView(R.layout.activity_sign_in);
+		btnRegister = (Button) findViewById(R.id.register);
 		
 		btnRegister.setOnClickListener(new OnClickListener() {
 			
