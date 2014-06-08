@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="10dp"
         android:src="@drawable/zooz_small"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -39,29 +39,56 @@
         android:id="@+id/textPublicKey"
         android:textColor="#e6e6e6"
         android:textSize="30dp"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/imageView" />
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_below="@+id/imageView" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Private :"
-        android:id="@+id/textView2"
+        android:id="@+id/privateKeyTitle"
         android:textColor="#e6e6e6"
         android:textSize="30dp"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/textPublicKey"
         android:layout_marginBottom="48dp" />
 
-    <TextView
+    <com.iride.main.util.AutoResizeTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:layout_below="@+id/textPublicKey"
+        android:id="@+id/pubKeyTextBox"
         android:layout_alignLeft="@+id/textPublicKey"
-        android:layout_marginTop="7dp"
+
+        android:gravity="center"
+        android:text="@string/hello_world"
+        android:textColor="#303030"
+        android:textSize="25dp"
         android:layout_alignParentRight="true"
-        android:background="@drawable/public_key" />
+        android:background="@drawable/public_key"
+        android:textIsSelectable="false"
+        android:singleLine="true"
+        android:layout_below="@+id/textPublicKey" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pubQrImage"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="20dp"
+        android:layout_above="@+id/privateKeyTitle"
+        android:layout_toRightOf="@+id/textView2" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scanQrButton"
+        android:layout_alignBottom="@+id/pubKeyTextBox"
+        android:paddingBottom="3dp"
+        android:layout_alignRight="@+id/pubKeyTextBox"
+        android:background="@null"
+        android:src="@drawable/qr_scanner_icon_60"
+        android:clickable="true"
+        android:onClick="scanQrOnClick" />
 
 </RelativeLayout>

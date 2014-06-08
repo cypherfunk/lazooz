@@ -7,7 +7,7 @@ import com.iride.data.UserInfo;
 import com.iride.io.Response;
 import com.iride.io.ServerResponseListener;
 import com.iride.io.Serverconnector;
-import com.iride.main.util.util.SystemUiHider;
+import com.iride.main.util.SystemUiHider;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
