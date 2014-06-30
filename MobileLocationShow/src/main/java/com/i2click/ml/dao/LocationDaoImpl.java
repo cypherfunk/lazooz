@@ -1,37 +1,50 @@
 package com.i2click.ml.dao;
 
-import org.hibernate.SessionFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
+import com.i2click.ml.config.SpringMongoConfig;
 import com.i2click.ml.entity.LocationEntity;
+
+import java.util.ArrayList;
 import java.util.List;
-import org.hibernate.Query;
+
 
 @Repository
 public class LocationDaoImpl implements LocationDAO {
 
-    @Autowired
-    private SessionFactory sessionFactory;
+	ApplicationContext ctx = 
+            new AnnotationConfigApplicationContext(SpringMongoConfig.class);
+	MongoOperations mongoOperation = (MongoOperations) ctx.getBean("locations");
+    
 
     @Override
     public void save(LocationEntity entity) {
-        this.sessionFactory.getCurrentSession().save(entity);
+    	mongoOperation.save(entity);
     }
     
     @Override
     public void update(LocationEntity entity) {
-        this.sessionFactory.getCurrentSession().update(entity);
+    	Query searchLocationQuery = new Query(Criteria.where("profileid").is(entity.getProfileid()));
+    	Update update = new Update();
+    	update.set("longtitude", entity.getLongitude());
+    	mongoOperation.updateFirst(searchLocationQuery,update,LocationEntity.class);
     }
 
     @Override
     public boolean isExist(int profileId) {
-        String queryString = "FROM LocationEntity WHERE profileid = :profileid";
-        Query query = this.sessionFactory.getCurrentSession().createQuery(queryString);
-        query.setParameter("profileid", profileId+"");
-        List list = query.list();
+    	Query searchLocationQuery = new Query(Criteria.where("profileid").is(profileId));
+    	List<LocationEntity> userLocation = mongoOperation.find(searchLocationQuery, LocationEntity.class);
         
-        if(list.isEmpty()){
+        
+        if(userLocation.isEmpty()){
             return false;
         }else{
             return true;
@@ -40,15 +53,13 @@ public class LocationDaoImpl implements LocationDAO {
     
     @Override
     public LocationEntity getLEObject(int profileId) {
-        String queryString = "FROM LocationEntity WHERE profileid = :profileid";
-        Query query = this.sessionFactory.getCurrentSession().createQuery(queryString);
-        query.setParameter("profileid", profileId+"");
-        List list = query.list();
+    	Query searchLocationQuery = new Query(Criteria.where("profileid").is(profileId));
+    	List<LocationEntity> userLocations = mongoOperation.find(searchLocationQuery, LocationEntity.class);
         
-        if (list.isEmpty()) {
+        if (userLocations.isEmpty()) {
             return null;
         } else {
-            return (LocationEntity) list.get(0);
+            return (LocationEntity) userLocations.get(0);
         }
     }
 }

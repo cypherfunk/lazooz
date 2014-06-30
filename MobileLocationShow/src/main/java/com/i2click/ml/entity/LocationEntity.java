@@ -11,29 +11,29 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 /**
  *
  * @author Nazmul
  */
-@Entity
-@Table(name="locations")
+@Document(collection= "locations")
+
 public class LocationEntity  {
     
     @Id
-    @Column(name="pkid")
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer pkid;
     
-    @Column(name="profileid")
+    
     private String profileid;
     
-    @Column(name="latitude")
+    
     private String latitude;
     
-    @Column(name="longitude")
+    
     private String longitude;
     
-    @Column(name="last_datetime")
+    
     private String last_datetime;
 
     /**

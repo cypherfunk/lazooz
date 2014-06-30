@@ -4,63 +4,62 @@
  */
 package com.i2click.ml.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  *
  * @author Nazmul
  */
-@Entity
-@Table(name="profiles")
+@Document(collection = "profiles")
+
 public class ProfilesEntity  {
     
     @Id
-    @Column(name="pkid")
+   
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer pkid;
     
-    @Column(name="username")
+    
     private String username;
     
-    @Column(name="password")
+   
     private String password;
     
-    @Column(name="fullname")
+    
     private String fullname;
     
-    @Column(name="sessionkey")
+   
     private String sessionkey;
     
-    @Column(name="hometown")
+    
     private String hometown;
     
-    @Column(name="age")
+    
     private String age;
     
-    @Column(name="isfbagree")
+    
     private String isfbagree;
     
-    @Column(name="created_datetime")
+    
     private String created_datetime;
     
-    @Column(name="mobilenumber")
+    
     private String mobilenumber;
     
-    @Column(name="ActivationCode")
+    
     private String ActivationCode;
     
-    @Column(name="Active")
+    
     private Integer Active;
     
-    @Column(name="zooz")
+    
     private Integer zooz;
     
-    @Column(name="publickey")
+   
     private String publickey;
     /**
      * @return the pkid
