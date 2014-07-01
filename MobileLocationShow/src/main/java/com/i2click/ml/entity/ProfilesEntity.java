@@ -5,9 +5,7 @@
 package com.i2click.ml.entity;
 
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -20,7 +18,6 @@ public class ProfilesEntity  {
     
     @Id
    
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer pkid;
     
     

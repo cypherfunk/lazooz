@@ -5,14 +5,14 @@
 package com.i2click.ml.controller;
 
 import com.google.gson.Gson;
-import com.i2click.ml.entity.FacebookEntity;
+//import com.i2click.ml.entity.FacebookEntity;
 import com.i2click.ml.entity.LocationEntity;
 import com.i2click.ml.entity.LocationLogEntity;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.i2click.ml.entity.ProfilesEntity;
-import com.i2click.ml.service.FacebookManager;
+//import com.i2click.ml.service.FacebookManager;
 import com.i2click.ml.service.LocationManager;
 import com.i2click.ml.service.LocationLogManager;
 import com.i2click.ml.service.ProfilesManager;
@@ -39,8 +39,8 @@ public class RESTfulController {
 
 	@Autowired
 	private ProfilesManager profilesManager;
-	@Resource(name = "facebookManager")
-	private FacebookManager facebookManager;
+	//@Resource(name = "facebookManager")
+	//private FacebookManager facebookManager;
 	@Resource(name = "locationManager")
 	private LocationManager locationManager;
 	@Resource(name = "locationLogManager")
@@ -365,100 +365,101 @@ public class RESTfulController {
 	public @ResponseBody
 	HashMap getFacebookInfoInJSON(HttpServletRequest request,
 			HttpServletResponse response) {
-		HashMap hashMap = new HashMap();
-		String command = request.getParameter("command");
-		if (RESTfulUtils.isValidCommand(command)) {
-			String[] parametersList = { "access_token", "fbuid", "data" };
-			hashMap = RESTfulUtils.validParameters(command, parametersList);
-			if (hashMap == null) {
-				JSONObject cmdJson = new JSONObject(command);
-				if (cmdJson.getString("access_token").isEmpty()) {
-					hashMap = RESTfulUtils.restErrorResult(
-							Constans.INVALID_REQUIERD_CODE, "ACCESS_TOKEN "
-									+ Constans.INVALID_REQUIERD_MESSAGE);
-				} else if (cmdJson.getString("fbuid").isEmpty()) {
-					hashMap = RESTfulUtils.restErrorResult(
-							Constans.INVALID_REQUIERD_CODE, "FACEBOOK ID "
-									+ Constans.INVALID_REQUIERD_MESSAGE);
-				} else if (cmdJson.getJSONObject("data").toString().isEmpty()) {
-					hashMap = RESTfulUtils.restErrorResult(
-							Constans.INVALID_REQUIERD_CODE, "DATA "
-									+ Constans.INVALID_REQUIERD_MESSAGE);
-				} else {
-					JSONObject data = cmdJson.getJSONObject("data");
-					String username = "";
-					if (data.has("username")) {
-						username = data.getString("username");
-					}
-					if (username.isEmpty() || username.equalsIgnoreCase("null")) {
-						username = cmdJson.getString("fbuid");
-					}
-					if (!username.isEmpty()) {
-						ProfilesEntity profileInfo = profilesManager
-								.findByUsername(username);
-						if (profileInfo == null) {
-							profileInfo = new ProfilesEntity();
-						}
-						profileInfo.setUsername(username);
-						profileInfo.setCreated_datetime(RESTfulUtils
-								.getCurrentDateTime());
-						profileInfo.setSessionkey(cmdJson.getString("fbuid"));
-						profileInfo.setPassword("");
-						profileInfo.setIsfbagree("1");
-						if (data.has("fullname")) {
-							profileInfo.setFullname(data.getString("fullname"));
-						}
-						if (data.has("hometown")) {
-							profileInfo.setHometown(data.getString("hometown"));
-						}
-						if (data.has("age")) {
-							profileInfo.setAge(data.getString("age"));
-						}
-						profilesManager.addProfiles(profileInfo);
-
-						ProfilesEntity profile = profilesManager
-								.findByUsername(username);
-						if (profile != null && profile.getPkid() != null
-								&& profile.getPkid() > 0) {
-							FacebookEntity facebookEntity = facebookManager
-									.getFBObject(profile.getPkid());
-							if (facebookEntity == null) {
-								facebookEntity = new FacebookEntity();
-							}
-							facebookEntity.setFbuid(cmdJson.getString("fbuid"));
-							facebookEntity.setData(cmdJson
-									.getJSONObject("data").toString());
-							facebookEntity.setAccess_token(cmdJson
-									.getString("access_token"));
-							facebookEntity.setProfileid(profile.getPkid() + "");
-							if (!facebookManager.isExist(profile.getPkid())) {
-								facebookManager.save(facebookEntity);
-							} else {
-								System.out.println("GSON :: "
-										+ new Gson().toJson(facebookEntity));
-								facebookManager.update(facebookEntity);
-							}
-							hashMap = RESTfulUtils
-									.restSuccessResult(Constans.SUCCESS_MESSAGE);
-						} else {
-							hashMap = RESTfulUtils.restErrorResult(
-									Constans.INVALID_CODE,
-									Constans.INVALID_MESSAGE);
-						}
-					} else {
-						hashMap = RESTfulUtils.restErrorResult(
-								Constans.INVALID_REQUIERD_CODE,
-								"USERNAME OR FBUID "
-										+ Constans.INVALID_REQUIERD_MESSAGE);
-					}
-				}
-			}
-		} else {
-			hashMap = RESTfulUtils.restErrorResult(
-					Constans.INVALID_COMMAND_CODE,
-					Constans.INVALID_COMMAND_MESSAGE);
-		}
-		return hashMap;
+				return null;
+//		HashMap hashMap = new HashMap();
+//		String command = request.getParameter("command");
+//		if (RESTfulUtils.isValidCommand(command)) {
+//			String[] parametersList = { "access_token", "fbuid", "data" };
+//			hashMap = RESTfulUtils.validParameters(command, parametersList);
+//			if (hashMap == null) {
+//				JSONObject cmdJson = new JSONObject(command);
+//				if (cmdJson.getString("access_token").isEmpty()) {
+//					hashMap = RESTfulUtils.restErrorResult(
+//							Constans.INVALID_REQUIERD_CODE, "ACCESS_TOKEN "
+//									+ Constans.INVALID_REQUIERD_MESSAGE);
+//				} else if (cmdJson.getString("fbuid").isEmpty()) {
+//					hashMap = RESTfulUtils.restErrorResult(
+//							Constans.INVALID_REQUIERD_CODE, "FACEBOOK ID "
+//									+ Constans.INVALID_REQUIERD_MESSAGE);
+//				} else if (cmdJson.getJSONObject("data").toString().isEmpty()) {
+//					hashMap = RESTfulUtils.restErrorResult(
+//							Constans.INVALID_REQUIERD_CODE, "DATA "
+//									+ Constans.INVALID_REQUIERD_MESSAGE);
+//				} else {
+//					JSONObject data = cmdJson.getJSONObject("data");
+//					String username = "";
+//					if (data.has("username")) {
+//						username = data.getString("username");
+//					}
+//					if (username.isEmpty() || username.equalsIgnoreCase("null")) {
+//						username = cmdJson.getString("fbuid");
+//					}
+//					if (!username.isEmpty()) {
+//						ProfilesEntity profileInfo = profilesManager
+//								.findByUsername(username);
+//						if (profileInfo == null) {
+//							profileInfo = new ProfilesEntity();
+//						}
+//						profileInfo.setUsername(username);
+//						profileInfo.setCreated_datetime(RESTfulUtils
+//								.getCurrentDateTime());
+//						profileInfo.setSessionkey(cmdJson.getString("fbuid"));
+//						profileInfo.setPassword("");
+//						profileInfo.setIsfbagree("1");
+//						if (data.has("fullname")) {
+//							profileInfo.setFullname(data.getString("fullname"));
+//						}
+//						if (data.has("hometown")) {
+//							profileInfo.setHometown(data.getString("hometown"));
+//						}
+//						if (data.has("age")) {
+//							profileInfo.setAge(data.getString("age"));
+//						}
+//						profilesManager.addProfiles(profileInfo);
+//
+//						ProfilesEntity profile = profilesManager
+//								.findByUsername(username);
+//						if (profile != null && profile.getPkid() != null
+//								&& profile.getPkid() > 0) {
+//							FacebookEntity facebookEntity = facebookManager
+//									.getFBObject(profile.getPkid());
+//							if (facebookEntity == null) {
+//								facebookEntity = new FacebookEntity();
+//							}
+//							facebookEntity.setFbuid(cmdJson.getString("fbuid"));
+//							facebookEntity.setData(cmdJson
+//									.getJSONObject("data").toString());
+//							facebookEntity.setAccess_token(cmdJson
+//									.getString("access_token"));
+//							facebookEntity.setProfileid(profile.getPkid() + "");
+//							if (!facebookManager.isExist(profile.getPkid())) {
+//								facebookManager.save(facebookEntity);
+//							} else {
+//								System.out.println("GSON :: "
+//										+ new Gson().toJson(facebookEntity));
+//								facebookManager.update(facebookEntity);
+//							}
+//							hashMap = RESTfulUtils
+//									.restSuccessResult(Constans.SUCCESS_MESSAGE);
+//						} else {
+//							hashMap = RESTfulUtils.restErrorResult(
+//									Constans.INVALID_CODE,
+//									Constans.INVALID_MESSAGE);
+//						}
+//					} else {
+//						hashMap = RESTfulUtils.restErrorResult(
+//								Constans.INVALID_REQUIERD_CODE,
+//								"USERNAME OR FBUID "
+//										+ Constans.INVALID_REQUIERD_MESSAGE);
+//					}
+//				}
+//			}
+//		} else {
+//			hashMap = RESTfulUtils.restErrorResult(
+//					Constans.INVALID_COMMAND_CODE,
+//					Constans.INVALID_COMMAND_MESSAGE);
+//		}
+//		return hashMap;
 	}
 
 	private boolean issueTranaction(String address,Integer Amount) {

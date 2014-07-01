@@ -19,7 +19,7 @@ public class ProfilesDaoImpl implements ProfilesDAO {
 
 	ApplicationContext ctx = 
             new AnnotationConfigApplicationContext(SpringMongoConfig.class);
-	MongoOperations mongoOperation = (MongoOperations) ctx.getBean("profiles");
+	MongoOperations mongoOperation = (MongoOperations) ctx.getBean("mongoTemplate");
 
     @Override
     public ArrayList<Object> locationList(){

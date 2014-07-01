@@ -22,7 +22,7 @@ public class LocationDaoImpl implements LocationDAO {
 
 	ApplicationContext ctx = 
             new AnnotationConfigApplicationContext(SpringMongoConfig.class);
-	MongoOperations mongoOperation = (MongoOperations) ctx.getBean("locations");
+	MongoOperations mongoOperation = (MongoOperations) ctx.getBean("mongoTemplate");
     
 
     @Override
